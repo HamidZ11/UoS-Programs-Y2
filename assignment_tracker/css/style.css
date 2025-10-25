@@ -1,0 +1,29 @@
+/* Optional fallback styles to complement Tailwind (used only if CDN fails) */
+body {
+    background: linear-gradient(135deg, #f5f7fa, #e4e7eb);
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    transition: background 0.3s ease;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+button, .btn {
+    transition: all 0.25s ease-in-out;
+}
+
+button:hover, .btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+}

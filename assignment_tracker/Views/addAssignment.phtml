@@ -1,0 +1,76 @@
+<?php require 'Views/template/header.phtml'; ?>
+
+    <div class="min-h-screen bg-gradient-to-br from-indigo-50 to-indigo-100 flex items-center justify-center px-4 py-12">
+        <div class="bg-white rounded-xl shadow-lg p-8 max-w-md w-full hover:shadow-xl transition-shadow">
+            <h1 class="text-3xl font-bold text-center text-indigo-700 mb-2">➕ Add New Assignment</h1>
+            <p class="text-center text-indigo-500 mb-6 text-sm">Fill out the form below to create a new assignment</p>
+
+            <form method="POST" action="index.php?action=add" enctype="multipart/form-data" class="space-y-5">
+                <div>
+                    <label for="module" class="block text-gray-700 font-medium mb-1">Module:</label>
+                    <input type="text" id="module" name="module" required class="w-full rounded-lg border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition" />
+                </div>
+
+                <div>
+                    <label for="title" class="block text-gray-700 font-medium mb-1">Title:</label>
+                    <input type="text" id="title" name="title" required class="w-full rounded-lg border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition" />
+                </div>
+
+                <div>
+                    <label for="description" class="block text-gray-700 font-medium mb-1">Description:</label>
+                    <textarea id="description" name="description" rows="3" class="w-full rounded-lg border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition"></textarea>
+                </div>
+
+                <div>
+                  <label for="due_date" class="block text-gray-700 font-medium mb-1">Due Date:</label>
+                  <input
+                    id="due_date"
+                    name="due_date"
+                    type="text"
+                    class="w-full rounded-lg border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition"
+                    placeholder="Select date"
+                    required
+                  >
+                </div>
+
+                <!-- Flatpickr Calendar Script -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+                <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    flatpickr("#due_date", {
+                        dateFormat: "d/m/Y",
+                        altInput: true,
+                        altFormat: "F j, Y",
+                        minDate: "today", // ⛔ Prevents selecting past dates
+                        defaultDate: new Date(),
+                        allowInput: true
+                    });
+                });
+                </script>
+
+                <div>
+                    <label for="brief" class="block text-gray-700 font-medium mb-1">Upload Brief (PDF):</label>
+                    <input type="file" id="brief" name="brief" accept="application/pdf"
+                           class="w-full border border-gray-200 rounded-lg px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-400 transition">
+                    <p class="text-xs text-gray-500 mt-1">Only PDF files are allowed.</p>
+                </div>
+
+                <div>
+                    <label for="status" class="block text-gray-700 font-medium mb-1">Status:</label>
+                    <select id="status" name="status" class="w-full rounded-lg border border-gray-200 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition">
+                        <option value="To Do">To Do</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </div>
+
+                <div class="flex space-x-4 justify-center mt-6">
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg px-6 py-2 transition transform hover:scale-[1.02]">Save Assignment</button>
+                    <a href="index.php" class="bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg px-6 py-2 transition transform hover:scale-[1.02] flex items-center justify-center">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<?php require 'Views/template/footer.phtml'; ?>
